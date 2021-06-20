@@ -120,16 +120,16 @@ var master_con = "0xc20ec447715aEE8e9BBec32Ecc7F3F1e7EF17a9f";
         reqWitdraw : async function (pid,am){
             var co    = master_con;  
             var digit = 18;
-            const web3 = new Web3(ethereum);
+           // const web3 = new Web3(ethereum);
           // check decimal before deposit
-            var abid = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}];
-            var  contract = new web3.eth.Contract(abid, co);
-            await  contract.methods.decimals().call().then(function(resp) {
+          //  var abid = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}];
+          //  var  contract = new web3.eth.Contract(abid, co);
+          //  await  contract.methods.decimals().call().then(function(resp) {
                 
-            WALLET.Withdraw(pid,am*(10**resp))
+            WALLET.Withdraw(pid,am*(10**digit))
              
 
-            });
+            //});
             } 
           ,
               
