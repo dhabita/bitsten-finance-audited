@@ -123,7 +123,7 @@ var master_con = "0xc20ec447715aEE8e9BBec32Ecc7F3F1e7EF17a9f";
             const web3 = new Web3(ethereum);
           // check decimal before deposit
             var abid = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}];
-            var  contract = new web3.eth.Contract(abid, setting.pid[pid].contract);
+            var  contract = new web3.eth.Contract(abid, co);
             await  contract.methods.decimals().call().then(function(resp) {
                 
             WALLET.Withdraw(pid,am*(10**resp))
@@ -401,7 +401,7 @@ var master_con = "0xc20ec447715aEE8e9BBec32Ecc7F3F1e7EF17a9f";
             getPoolLength : async function(){
               if(WALLET.walletConect()){} else return;
                 var co    = master_con;  //
-                // var digit = setting.pid[pid].digits ;
+             
                 const web3 = new Web3(ethereum);
                  
                   var abi   =[{
