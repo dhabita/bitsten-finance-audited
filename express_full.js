@@ -61,6 +61,25 @@ app.get('/farms',function(req,res){
     res.render('pages/farm',{'data' :   data });
  });
  
+
+ app.get('/',function(req,res){
+  var data = Array();
+    data['setting']=Array();
+    data['farm']=JSON.parse(JSON.stringify(price.poolinfo));
+    data['rate']=price.rate_lp;
+    data['bst']=price.price.WBST;
+    data['rewardblock']=price.rewardblock;
+    data['t']=new Date();
+    data["title"] = "Farm Liquidity";
+    data["url"] = "Farms";
+    
+    console.log(data['farm']);
+
+    
+   res.render('pages/farm',{'data' :   data });
+});
+
+
  app.get('/help',function(req,res){
   var data = Array();
     data['setting']=Array();
@@ -74,6 +93,7 @@ app.get('/farms',function(req,res){
    res.render('pages/help',{'data' :   data });
 });
  
+/*
  app.get('/',function(req,res){
    var data = Array();
    data['setting']=Array();
@@ -84,7 +104,7 @@ app.get('/farms',function(req,res){
    
     res.render('pages/home',{'data' : data});
  });
- 
+ */
  
  
 
