@@ -15,7 +15,7 @@ function number_format(b,f= -1){
 }
 -%>
 <link rel="stylesheet" href="stisla/assets/css/customs/farm.css">
-<span id='ratelp' class='d-none'><%= data.rate -%></span>
+
 <style>
  
   
@@ -23,113 +23,158 @@ function number_format(b,f= -1){
   .swapb-1{background: rgb(230, 191, 19);}
 </style>
  
-  <div class="row listing" style='max-width: 1000px ; margin:20px auto;'>
+ 
+<span id='ratelp' class='d-none'><%= data.rate %></span> 
+ 
+  <div class="row listing" style='max-width: 1000px ; margin:0px auto;'>
 
 <% for( var a=0; a <  (data.farm.length) ;  a++ ){  -%>
 
  
   
-    <div class="col-12  col-md-4 col-lg-4 diradius list-project" id='pid-box-<%=  a  %>'>
+    <div class="col-12    diradius list-project" id='pid-box-<%=  a  %>'>
       <div class="pricing pricing-highlight  ">
+        <!--
         <div class="pricing-title ">
           LP Farming
         </div>
-        <div class="card ">
+      -->
+          <div class="card ">
           <div class="card-body">
-          <div style=" min-height: 150px">
-          <h5 class="card-title text-center"><img src="https://exchange.bitsten.com/assets/static/v30/images/logo/busd.png" width="40px">
-             <span class=''>BUSD</span> - <span class=''>WBST</span>
-             <img src="https://exchange.bitsten.com/assets/static/v30/images/logo/bst.png"  width="40px"> </h5>
+               
+          <div style='cursor:pointer'  onClick="$('.detail<%=  a  %>').toggle();$('.hide<%=  a  %>').toggle()" class=" text-center  row  mb-2 rounded-0 rounded-bottom" data-toggle="collapse" href="#collapseDetail-<%=  a  %>" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+         
+          <div class="col-lg-2 col-xs-12 col-sm-12">
+          <div class="mt-1  text-center ">
+            <img src="https://exchange.bitsten.com/assets/static/v30/images/logo/busd.png" width="40px"> - 
+            <img src='https://exchange.bitsten.com/assets/static/v30/images/logo/<%= a < 3 ? "wbst" : "wbst" %>.png'  width="40px">
+          <br>
+          <span class='font-weight-bold'>BUSD</span> - <span class='font-weight-bold'>BST</span></div>
+          </div>
+             
+            <div class="col-lg-10 col-sm-12 col-xs-12 ">
+
+
+              <div id='pid-boxs-<%=  a  %>' class='swap1-<%=  a  %>'>
+                <div class="row text-center " style="margin-top:20px">
+               
+                <div class="col-lg-2 col-sm-4 col-4    mt-2  " style=" padding: 0px 10px" >
+                  <span class='text-success font-weight-bold'><%= number_format((data.bst*data.rewardblock*28800* 355*0.000000000000000001)/( data.rate*data.farm[a][5]*2*0.01) ,2) %>%</span>
+                  <br> 
+                  <small class=''>APR</small>
+                </div>
+
+                
+                <div class="col-lg-1 col-sm-4 col-4  mt-2 " style=" padding: 0px 10px">
+                <span class='text-success font-weight-bold'><%= number_format((data.bst*data.rewardblock*28800*0.000000000000000001)/((data.rate* data.farm[a][5]*2)*0.01),2) -%>%</span>
+                <br>
+                <small class=''>Daily</small>
+                
+                 
+                </div>
+                <div class="col-lg-1 col-sm-4 col-4  mt-2 " style=" padding: 0px 10px">
+                  <span class='text-warning font-weight-bold'><%= data.farm[a][2] -%>%</span>
+                  <br>
+                  <small class=''>Fee</small>
+                  
+                   
+                  </div>
+
+
+                <div class="col-lg-2 col-sm-4 col-4 mt-2 "  >
+                  
+                  <div class="  " style=" padding: 0px 10px">
+                  <span class='text-warning  font-weight-bold'><%= Math.floor( (data.farm[a][7]*3)/(60*60*24)) -%> Days</span> 
+                  </div>
+                  <small class=''>Lock</small>
+                  </div>
+
+                  <div class="col-lg-2 col-sm-6 col-6 mt-2  "  >
+                   <span class='text-info font-weight-bold pending-reward-pid-<%=  a  %>'>0</span> 
+                  <br>
+                  <small class=''>Reward</small>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-6  mt-2" > 
+                  <span class='text-info font-weight-bold your-lp-pid-<%=  a  %>'>0</span> 
+                   <br>
+                   <small class=''>Your LP</small>
+                  </div>
+</div>
+</div>
+</div>   </a>
+                 
 
              
- 
-          <div id='pid-boxs-<%=  a  %>' class='swap1-<%=  a  %>'>
-          <h6 class="row" style="margin-top:20px">
-          <div class="col-5 text-left " style="padding: 0px 10px">APR
-          </div>
-          <div class="col-7  text-right text-right text-success  " style=" padding: 0px 10px" >
-            <%= number_format((data.bst*data.rewardblock*0.000000000000000001*28800* 355)/((data.rate * data.farm[a][5]*2)*0.01) ,2) %>%
-          </div>
-        </h6>
-          
-          
-      
-          <div class="row font-weight-bold">
-          <div class="col-5 text-left  " style="padding: 0px 10px">Deposit
-          </div>
-          <div class="col-7 text-right text-success  name-<%=  a  %>" style=" padding: 0px 10px">
-          BUSD-WBST LP </div>
-          </div>
-          <div class="row font-weight-bold">
-          <div class="col-5 text-left  " style="padding: 0px 10px">Reward
-          </div>
-          <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-          WBST
-          </div>
-          </div>
-            
-          
-            
-
-            <div class="row font-weight-bold"  >
-              <div class="col-5 text-left  " style="padding: 0px 10px">Daily reward
-              </div>
-              <div class="col-7 text-right text-success  " style=" padding: 0px 10px">
-              <span class=''><%= number_format((data.bst*data.rewardblock*0.000000000000000001*28800)/((data.rate * data.farm[a][5]*2)*0.01),2) -%></span>%
-              </div>
-              </div>
-          
-              <div class="row font-weight-bold"  >
-                <div class="col-5 text-left  " style="padding: 0px 10px">Deposit Fee
-                </div>
-                <div class="col-7 text-right text-success  " style=" padding: 0px 10px">
-                <span class=''><%= data.farm[a][2] -%></span>%
-                </div>
-                </div>
-                <div class="row font-weight-bold"  >
-                  <div class="col-5 text-left  " style="padding: 0px 10px">Deposit Lock
-                  </div>
-                  <div class="col-7 text-right text-success  " style=" padding: 0px 10px">
-                  <span class=''><%= Math.floor( (data.farm[a][7]*3)/(60*60*24)) -%></span> Days
-                  </div>
-                  </div>
+             
               
+
+           
+          </div>
+         
+
+       
+          
+       
+         
+         
+          </div>
+          
  
+       
+
+
+        
+          
+ 
+       
+         
+        </div>
+       
+      <div class="collapse card-content pb-3 swap1-<%=  a  %>" id="collapseDetail-<%=  a  %>">
+      
+      
+          <div class='row'>
+          <div class="col-lg-3 col-sm-6 col-6 mt-2">   
+            <div class=" font-weight-bold   text-success " style=" padding: 0px 10px">
+              $ <span class=''><%=  number_format(data.rate * data.farm[a][5]*2 )  %></span>
+              <!-- * data.rewardblock*2 -->
+              </div>
+          <small>TVL</small>
+          
           
           </div>
-         </div>
+
+           <div class="col-lg-3 col-sm-6 col-6 mt-2">
+            <div class="font-weight-bold  text-success " style=" padding: 0px 10px">
+              $ <span class='yourusdlp-<%=  a  %>'>0</span>
+              </div> 
+            <small>Your LP</small>
+           
+           
+            </div>
+
+
+            <div class="col-lg-3 col-sm-6 col-6 mt-2 text-center  pt-1 "   >
+              <button class="btn btn-sm btn-success get-harvest-pid-<%=  a  %>">HARVEST</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6 mt-2 text-center pt-1   "   >
+             
+              <button data-toggle="modal" data-target="#modal-wd-pid-<%=  a  %>" data-backdrop="false" href="#!" class="btn btn-icon btn-info btn-sm wd-liq-pid-<%=  a  %>"><i class="fas fa-minus"></i></button>
+              <button data-toggle="modal" data-target="#modal-dp-pid-<%=  a  %>" data-backdrop="false" href="#!" class="btn btn-icon btn-info btn-sm dp-liq-pid-<%=  a  %> swap1-<%=  a  %>"><i class="fas fa-plus"></i></button>
+   
+                
+            </div>
+
           </div>
-          </div>
- 
-        <div class="d-flex mt-2" > 
-          <div class="col-6 text-center   text-warning "   >
-            Reward
-          </div>
-          <div class="col-6 text-center   text-warning "   >
-            Your LP
-          </div>
-        </div>
-        <div class="d-flex mt-2" > 
-          <div class="col-6 text-center    "   >
-            <h6><span class='pending-reward-pid-<%=  a  %>'>0</span></h6>
-          </div>
-          <div class="col-6 text-center    "   >
-            <h6><span class='your-lp-pid-<%=  a  %>'>0</span></h6>
-          </div>
-        </div>
+
+
+
+
 
 
         <div  style='border-bottom:1px solid #ddd; display:none; margin:0px  ' class="row mt-2 pb-3 aproved-pid-<%=  a  %>"> 
-          <div class="col-6 text-center    "   >
-            <button class="btn btn-sm btn-success get-harvest-pid-<%=  a  %>">HARVEST</button>
-          </div>
-          <div class="col-6 text-center    "   >
-           
-            <button data-toggle="modal" data-target="#modal-wd-pid-<%=  a  %>" data-backdrop="false" href="#!" class="btn btn-icon btn-info btn-sm wd-liq-pid-<%=  a  %>"><i class="fas fa-minus"></i></button>
-            <button data-toggle="modal" data-target="#modal-dp-pid-<%=  a  %>" data-backdrop="false" href="#!" class="btn btn-icon btn-info btn-sm dp-liq-pid-<%=  a  %> swap1-<%=  a  %>"><i class="fas fa-plus"></i></button>
- 
-              
-          </div>
+         
          
         </div>
 
@@ -143,57 +188,15 @@ function number_format(b,f= -1){
           </div>
 
         </div>
-          
- 
-       
-        <br>
-        <a onClick="$('.detail<%=  a  %>').toggle();$('.hide<%=  a  %>').toggle()" class="    mb-2 rounded-0 rounded-bottom" data-toggle="collapse" href="#collapseDetail-<%=  a  %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <span class='detail<%=  a  %>' >Details</span><span class='hide<%=  a  %>' style='display:none' >Hide</span>
-        </a>
-        <br>
-        <br>
-       
-      <div class="collapse card-content pb-3 swap1-<%=  a  %>" id="collapseDetail-<%=  a  %>">
+
+
+
+        
     
-        <div class="row font-weight-bold">
-          <div class="col-5 text-left  " style="padding: 0px 10px">Buy  <span class=''>WBST</span>
-          </div>
-          <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-            <strong><a target="_blank" href="https://exchange.pancakeswap.finance#/swap?outputCurrency=0x58d6f302aaf33dd30a7666e16909db3c5c74021b"> Pancakeswap <i class="bi bi-arrow-up-right-square"></i></a></strong>
-          </div>
-          </div>
-        <div class="row font-weight-bold">
-          <div class="col-5 text-left  " style="padding: 0px 10px">Get Liquidity
-          </div>
-          <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-            <strong><a target="_blank" href="https://exchange.pancakeswap.finance#/add/0xe9e7cea3dedca5984780bafc599bd69add087d56/0x58d6f302aaf33dd30a7666e16909db3c5c74021b"> Pancakeswap <i class="bi bi-arrow-up-right-square"></i></a></strong>
-          </div>
-          </div>
-          <div class="row font-weight-bold">
-            
-            <div class="col-5 text-left  " style="padding: 0px 10px">TVL
-            </div>
-            <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-            $ <span class=''><%=  number_format(data.rate * data.farm[a][5]*2)  %></span>
-            </div>
-            </div>
+        
+         
 
-            <div class="row font-weight-bold">
             
-              <div class="col-5 text-left  " style="padding: 0px 10px">Your LP
-              </div>
-              <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-              $ <span class='yourusdlp-<%=  a  %>'>0</span>
-              </div>
-              </div>
-
-            <div class="row font-weight-bold">
-              <div class="col-5 text-left  " style="padding: 0px 10px">Explorer
-              </div>
-              <div class="col-7 text-right text-success " style=" padding: 0px 10px">
-                <strong><a target="_blank" href='https://bscscan.com/token/0x58d6f302aaf33dd30a7666e16909db3c5c74021b'>Bscscan <i class="bi bi-arrow-up-right-square"></i></a></strong>
-              </div>
-              </div>
    
       </div>
       </div>
@@ -215,9 +218,7 @@ function number_format(b,f= -1){
     
                   
                 </div>
-                <div class="d-flex pt-2" >
-                  <input type="range" class="form-range col-12 roda-wd-<%=  a  %>" style='padding: 0px;'   >
-                </div>
+                
                 
               </div>
             
@@ -226,9 +227,7 @@ function number_format(b,f= -1){
               <button type="button" style="width: 200px;" class="btn btn-warning" data-dismiss="modal">Close</button>
               <button type="button" style="width: 200px;" class="btn btn-primary approve-withdraw-lp-pid-<%=  a  %>">Confirm</button>
             </div>
-            <div  class='text-center col-12'><a href="<%= a %>token/<%=  a  %>">get   LP <i
-              class="bi bi-arrow-up-right-square"></i></a></p> 
-          </div>
+            
           </div>
         </div>
       </div>
@@ -250,9 +249,7 @@ function number_format(b,f= -1){
     
                   
                 </div>
-                <div class="d-flex pt-2" >
-                  <input type="range" class="form-range col-12 roda-dp-<%=  a  %>" style='padding: 0px;'  >
-                </div>
+                
                 
               </div>
               
@@ -262,8 +259,7 @@ function number_format(b,f= -1){
               <button type="button" style="width: 200px;" class="btn btn-primary approve-deposit-lp-pid-<%=  a  %>">Confirm</button>
               
             </div>
-            <div  class='text-center col-12'><a href="https://pancakeswap.info/token/<%=  a  %>">get   LP <i
-              class="bi bi-arrow-up-right-square"></i></a></p></div>
+            
               </div>
               </div>
               </div>
