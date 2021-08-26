@@ -25,13 +25,13 @@ function number_format(b,f= -1){
             <div class='col-12 text-center'>
                 Bitsten Finance Smart Contract
                 <p>
-                    <a href='https://bscscan.com/address/0xc20ec447715aee8e9bbec32ecc7f3f1e7ef17a9f#code'>
-            https://bscscan.com/address/0xc20ec447715aee8e9bbec32ecc7f3f1e7ef17a9f#code</a>
+                    <a href='https://bscscan.com/address/0xc20ec447715aee8e9bbec32ecc7f3f1e7ef17a9f'>
+                        <span class='d-none d-md-block'>https://bscscan.com/address/</span>0xc20ec447715aee8e9bbec32ecc7f3f1e7ef17a9f</a>
                 </p>
                 Bitsten Token Smart Contract
                 <p>
                     <a href='https://bscscan.com/token/0x58d6f302aaf33dd30a7666e16909db3c5c74021b'>
-                      https://bscscan.com/token/0x58d6f302aaf33dd30a7666e16909db3c5c74021b</a>
+                        <span class='d-none d-md-block'>https://bscscan.com/token/</span>0x58d6f302aaf33dd30a7666e16909db3c5c74021b</a>
                 </p>
 
 
@@ -46,7 +46,21 @@ function number_format(b,f= -1){
 
             </div>
         </div>
-
+        <div class="row text-center   border-bottom border-top pt-3 pb-3  sadow mb-3" style='max-width: 1000px ; margin:0px auto;'>
+            <div class="col-12 mb-3 border-bottom   pb-3">Wallet Balance</div>
+            <div class="col-md-4 ">
+                <h6> WBST</h6>
+                <h4 class="balance-wbst">0</h4>
+            </div>
+            <div class="col-md-4">
+                <h6> LP</h6>
+                <h4 class='your-wallet-lp-pid-0'>0</h4>
+            </div>
+            <div class="col-md-4">
+                <h6> BUSD</h6>
+                <h4 class='balance-busd'>0</h4>
+            </div>
+        </div>
 
         <span id='ratelp' class='d-none'><%= data.rate %></span>
 
@@ -78,21 +92,21 @@ function number_format(b,f= -1){
                                         <div id='pid-boxs-<%=  a  %>' class='swap1-<%=  a  %>'>
                                             <div class="row text-center " style="margin-top:20px">
 
-                                                <div class="col-lg-2 col-sm-4 col-4    mt-2  " style=" padding: 0px 10px">
+                                                <div class="col-lg-2 col-sm-4 col-3    mt-3  " style=" padding: 0px 10px">
                                                     <span class='text-success font-weight-bold'><%= number_format((data.bst*data.rewardblock*28800* 355*0.000000000000000001)/( data.rate*data.farm[a][5]*2*0.01) ,2) %>%</span>
                                                     <br>
                                                     <small class=''>APR</small>
                                                 </div>
 
 
-                                                <div class="col-lg-1 col-sm-4 col-4  mt-2 " style=" padding: 0px 10px">
+                                                <div class="col-lg-1 col-sm-4 col-3  mt-3 " style=" padding: 0px 10px">
                                                     <span class='text-success font-weight-bold'><%= number_format((data.bst*data.rewardblock*28800*0.000000000000000001)/((data.rate* data.farm[a][5]*2)*0.01),2) -%>%</span>
                                                     <br>
                                                     <small class=''>Daily</small>
 
 
                                                 </div>
-                                                <div class="col-lg-1 col-sm-4 col-4  mt-2 " style=" padding: 0px 10px">
+                                                <div class="col-lg-1 col-sm-4 col-3  mt-3 " style=" padding: 0px 10px">
                                                     <span class='text-warning font-weight-bold'><%= data.farm[a][2] -%>%</span>
                                                     <br>
                                                     <small class=''>Fee</small>
@@ -101,7 +115,7 @@ function number_format(b,f= -1){
                                                 </div>
 
 
-                                                <div class="col-lg-2 col-sm-4 col-4 mt-2 ">
+                                                <div class="col-lg-2 col-sm-4 col-3 mt-3 ">
 
                                                     <div class="  " style=" padding: 0px 10px">
                                                         <span class='text-warning  font-weight-bold'><%= Math.floor( (data.farm[a][7]*3)/(60*60*24)) -%> Days</span>
@@ -109,13 +123,13 @@ function number_format(b,f= -1){
                                                     <small class=''>Lock</small>
                                                 </div>
 
-                                                <div class="col-lg-2 col-sm-6 col-6 mt-2  ">
+                                                <div class="col-lg-2 col-sm-6 col-6 mt-3  ">
                                                     <span class='text-info font-weight-bold pending-reward-pid-<%=  a  %>'>0</span>
                                                     <br>
                                                     <small class=''>Reward</small>
                                                 </div>
 
-                                                <div class="col-lg-4 col-sm-6 col-6  mt-2">
+                                                <div class="col-lg-4 col-sm-6 col-6  mt-3">
                                                     <span class='text-info font-weight-bold your-lp-pid-<%=  a  %>'>0</span>
                                                     <br>
                                                     <small class=''>Your LP</small>
@@ -290,3 +304,110 @@ function number_format(b,f= -1){
                 <% } %>
 
         </div>
+
+
+        <style>
+            .tos {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.7);
+                overflow-y: scroll;
+            }
+        </style>
+        <div class="tos">
+            <div style="max-width:700px;width:100%;margin:30px auto;padding:50px 20px;background:#fff;font-size:12px">
+                <h1>Disclaimer</h1>
+                <br /> Trading cryptocurrencies carries a <b>high level of risk</b>, and may not be suitable for all investors. <b>Before deciding to trade cryptocurrency</b> you should carefully consider your investment objectives, level of experience,
+                and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and therefore you should not invest money that you cannot afford to lose. ICO's, IEO's, STO's and any other form of offering
+                will not guarantee a return on your investment. <br />
+                <br />
+                <b>You should be aware of all the risks associated with cryptocurrency trading, and seek advice from an independent financial advisor</b><br />
+                <br /> Any opinions, news, research, analyses, prices, or other information contained on this website is provided as general market commentary, and does not constitute investment advice. The Bitsten.Finance will not accept liability for
+                any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information. All opinions expressed on this site are owned by the respective writer and should
+                never be considered as advice in any form. <br />
+                <br /> The Bitsten.Finance makes no representation or warranties as to the accuracy and or timelines of the information contained herein. A qualified professional should be consulted before making any financial decisions. <br />
+                <br />
+                <div class="p-3 mb-3 box-warning" style="border-radius: 10px;">
+                    <label class="el-checkbox">
+        <span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" id="checkbox-1" /></span>
+        <span   style="color: red;" class='text-left mb-0'>
+                <b>
+                    I understand and accept  
+                    that I will trade/invest Bitsten at my own risks
+                </b>
+            
+        </span>
+    </label>
+                    <br />
+                    <br />
+                    <label class="el-checkbox mb-0">
+        <span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" id="checkbox-2"/></span>
+        <span   style="color: red;" class='text-left'>
+                <b>
+                    I understand and accept 
+                    that this app https://bitsten.finance 
+                    only works smoothly with BSC on Metamask/TrustWallet
+                </b>
+             
+            <!---->
+        </span>
+    </label>
+                </div>
+                <h6 class="text-danger mt-2 warning-text d-none text-center">Warning : You need check all checkbox!</h6>
+                <div class='text-center'>
+                    <button type="button" class='btn btn-success rounded-0' onclick="disclaimer()">Confirm</button>
+                </div>
+                <!---->
+            </div>
+        </div>
+
+        <script>
+            let checkDisc = () => {
+                let cookie = getCookie('disclaimer');
+                if (cookie === 'true') {
+                    $('.tos').addClass('d-none');
+                } else {
+                    $('.tos').removeClass('d-none');
+                }
+            }
+
+            let disclaimer = () => {
+                cb1 = $('#checkbox-1').prop('checked');
+                cb2 = $('#checkbox-2').prop('checked');
+                if (cb1 === true && cb2 === true) {
+                    setCookie('disclaimer', true, 10000);
+                    $('.tos').addClass('d-none');
+                } else {
+                    $('.warning-text').removeClass('d-none');
+                    $('.box-warning').addClass('bg-warning');
+                }
+            }
+
+            function setCookie(key, value, expiry) {
+                var expires = new Date();
+                expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+                document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+            }
+
+            function getCookie(key) {
+                var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+                return keyValue ? keyValue[2] : null;
+            }
+
+            function deleteAllCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    var eqPos = cookie.indexOf("=");
+                    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+            }
+
+            checkDisc();
+        </script>
