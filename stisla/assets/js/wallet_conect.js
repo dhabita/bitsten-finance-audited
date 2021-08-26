@@ -340,7 +340,10 @@ var WALLET = {
             var fr = accounts[0];
             var contract = new web3.eth.Contract(abi, co);
             await contract.methods.balanceLP(pid, fr).call().then(function(resp) {
-                HANDLE.BalanceLP(pid, resp / Math.pow(10, digit));
+                let r = resp;
+                if (resp > 0) WALLET.getPendingReward(pid);
+                HANDLE.BalanceLP(pid, r / Math.pow(10, digit));
+
             });
         } catch (error) {
 

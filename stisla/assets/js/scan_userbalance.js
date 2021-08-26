@@ -3,7 +3,7 @@ function aa() {
         WALLET.getBalanceWbst();
         WALLET.getBalanceBusd();
         WALLET.getBalanceLP(a);
-        WALLET.getPendingReward(a);
+
         WALLET.getWalletLpBalance(a);
 
     }
